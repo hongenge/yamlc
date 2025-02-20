@@ -21,6 +21,12 @@ pip install yamlc
 ```python
 from yamlc import Yamlc
 
+# 使用前调用 load 加载配置文件。默认加载当前脚本目录下的`config.yaml`
+Yamlc.load()
+
+# 使用自定义路径加载配置文件
+Yamlc.load("/path/to/config.yaml")
+
 # 获取配置项
 value = Yamlc.get("database.host")
 print(value)  # 输出: localhost (假设配置文件中有此项)
@@ -36,18 +42,10 @@ print(database_config)
 # 假设配置文件中有 "database" 配置块
 ```
 
-## 设置配置文件路径
-```python
-from yamlc import Yamlc
-
-# 设置新的配置文件路径
-Yamlc.set_config_file_path("new_config.yaml")
-```
 
 ## 重新加载配置文件
+如果配置文件有修改，可以调用`reload`方法重新加载配置。
 ```python
-from yamlc import Yamlc
-
 # 重新加载配置文件
 Yamlc.reload()
 ```

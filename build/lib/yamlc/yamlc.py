@@ -5,7 +5,8 @@ from threading import Lock
 class Yamlc:
     _config = None
     _lock = Lock()
-    _config_file = "config.yaml"
+    _config_file = os.path.join(os.getcwd(), "config.yaml")
+    
     @classmethod
     def _load_config(cls):
         with cls._lock:
@@ -40,7 +41,11 @@ class Yamlc:
             cls._load_config()
 
     @classmethod
-    def set_config_file_path(cls, path: str) -> None:
-        if not os.path.exists(path):
-            raise FileNotFoundError(f"配置文件路径 {path} 不存在")
-        cls._config_file = path
+    def load(cls, path: str = None) -> None:
+        if cls._config is not None:
+            return
+        if path:
+            if not os.path.exists(path):
+                raise FileNotFoundError(f"配置文件路径 {path} 不存在")
+            cls._config_file = os.path.abspath(path)
+        cls._load_config()
