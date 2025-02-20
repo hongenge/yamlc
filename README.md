@@ -16,12 +16,11 @@
 pip install yamlc
 ```
 
-
 ## 示例用法：
 ```python
 from yamlc import Yamlc
 
-# 使用前调用 load 加载配置文件。默认加载当前脚本目录下的`config.yaml`
+# 使用前调用 load 加载配置文件。默认加载当前工作目录下的`config.yaml`
 Yamlc.load()
 
 # 使用自定义路径加载配置文件
