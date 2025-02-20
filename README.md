@@ -5,8 +5,7 @@
 
 ## 特性
 
-- 支持加载 YAML 配置文件。
-- 支持点语法访问嵌套的配置项。
+- 点语法访问嵌套的配置项。
 - 支持重新加载配置文件。
 - 可以设置配置文件路径。
 
@@ -23,8 +22,18 @@ pip install yamlc
 from yamlc import Yamlc
 
 # 获取配置项
+value = Yamlc.get("database.host")
+print(value)  # 输出: localhost (假设配置文件中有此项)
+
+# 获取配置项并指定默认值
 value = Yamlc.get("database.host", default="localhost")
 print(value) # 如果配置中没有 "database.host"，则返回 "localhost"
+
+# 获取 "database" 配置块
+database_config = Yamlc.get("database")
+print(database_config)
+# 输出: {'host': 'localhost', 'port': 5432, 'username': 'user', 'password': 'pass'}
+# 假设配置文件中有 "database" 配置块
 ```
 
 ## 设置配置文件路径
@@ -44,7 +53,8 @@ Yamlc.reload()
 ```
 
 ## 配置文件示例
-yamlc 库支持的配置文件格式如下所示：
+`yaml`配置文件格式如下所示：
+
 ```yaml
 database:
   host: localhost
