@@ -1,1 +1,1 @@
-yamlic
+yamlc
