@@ -1,0 +1,41 @@
+# config.yaml 示例
+app:
+  name: "MyApp"
+  version: "1.0.0"
+  debug: true  # 是否开启调试模式
+
+# 数据库配置
+database:
+  host: "localhost"
+  port: 5432
+  user: "admin"
+  password: "securepassword"
+  dbname: "my_database"
+
+# API 配置
+api:
+  base_url: "https://api.example.com"
+  timeout: 30  # 请求超时时间（秒）
+  api_key: "your-api-key-here"
+
+# 日志配置
+logging:
+  level: "DEBUG"
+  file: "/var/log/myapp.log"
+  rotate:
+    enabled: true
+    max_size: "10MB"  # 最大文件大小
+    backup_count: 5  # 保留的备份文件数量
+
+# 邮件配置
+email:
+  smtp_server: "smtp.example.com"
+  smtp_port: 587
+  username: "user@example.com"
+  password: "emailpassword"
+  from_address: "noreply@example.com"
+
+# 自定义设置
+custom:
+  theme: "dark"
+  max_items_per_page: 50
