@@ -1,6 +1,6 @@
-from yamlio.yamlio import Yamlio
+from yamlc import Yamlc
 
-Yamlio.set_config_file_path("config.yaml")
+Yamlc.set_config_file_path("config.yaml")
 
-print(Yamlio.get("app.name"))
-print(Yamlio.get("api.base_url"))
+print(Yamlc.get("app.name"))
+print(Yamlc.get("api.base_url"))
