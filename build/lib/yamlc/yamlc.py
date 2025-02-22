@@ -5,8 +5,8 @@ from threading import Lock
 
 class Yamlc:
     _config = None
-    _lock = Lock()
     _config_file = None
+    _lock = Lock()
     
     @classmethod
     def _get_config_path(cls):
