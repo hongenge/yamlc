@@ -1,2 +1,5 @@
 **/__pycache__
 *.pypirc
+build/
+dist/
+yamlc.egg-info/
