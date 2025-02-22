@@ -1,7 +1,7 @@
-from yamlc import Yamlc
+from yamlc import Yamlc as yc
 
-Yamlc.load()
+yc.load()
 
-print(Yamlc.get("app"))
-print(Yamlc.get("app.name"))
-print(Yamlc.get("api.base_url"))
+print(yc.get("app"))
+print(yc.get("app.name"))
+print(yc.get("api.base_url"))
