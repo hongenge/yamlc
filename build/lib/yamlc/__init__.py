@@ -1,2 +1,0 @@
-__version__ = "0.1.9"
-from .yamlc import Yamlc
