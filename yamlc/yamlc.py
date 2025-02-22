@@ -1,17 +1,38 @@
 import yaml
 import os
+import sys
 from threading import Lock
 
 class Yamlc:
     _config = None
     _lock = Lock()
-    _config_file = os.path.join(os.getcwd(), "config.yaml")
+    _config_file = None
     
+    @classmethod
+    def _get_config_path(cls):
+        """获取配置文件路径，按优先级顺序检查"""
+        # 检查当前工作目录
+        cwd_config = os.path.join(os.getcwd(), "config.yaml")
+        if os.path.exists(cwd_config):
+            return cwd_config
+        
+        # 获取主脚本目录并检查
+        if getattr(sys, 'frozen', False):  # 处理打包情况
+            main_script_dir = os.path.dirname(os.path.abspath(sys.executable))
+        else:
+            main_script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+        main_config = os.path.join(main_script_dir, "config.yaml")
+        return main_config
+
+
     @classmethod
     def _load_config(cls):
         with cls._lock:
             if cls._config is None:
                 # print("加载配置文件...")
+                if cls._config_file is None:
+                    cls._config_file = cls._get_config_path()
+
                 if not os.path.exists(cls._config_file):
                     raise FileNotFoundError(f"{cls._config_file} not found")
 
