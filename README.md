@@ -21,9 +21,7 @@ pip install yamlc
 from yamlc import Yamlc
 
 # 可选方法，用于加载 YAML 配置文件。若未调用，会在首次访问配置时自动加载。
-# 未指定路径时，按优先级依次尝试：
-# 1. 当前工作目录下的 "config.yaml"
-# 2. 主脚本所在目录下的 "config.yaml"
+# 未指定路径时，默认会在当前工作目录下查找 "config.yaml" 文件。
 Yamlc.load()
 
 # 自定义路径加载配置文件
